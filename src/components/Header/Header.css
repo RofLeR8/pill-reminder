@@ -1,0 +1,128 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--color-primary-light);
+  border-radius: var(--radius-xl);
+  margin: var(--spacing-md);
+}
+
+.header__button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: white;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.header__button:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.header__button:active {
+  transform: translateY(0);
+}
+
+.header__time {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: white;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+}
+
+.header__clock-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: var(--color-primary);
+}
+
+.header__notification-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-destructive);
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.header__time-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.header__time-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1;
+}
+
+.header__date-value {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  line-height: 1;
+  text-transform: capitalize;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .header {
+    padding: var(--spacing-sm);
+    margin: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+
+  .header__button span {
+    display: none;
+  }
+
+  .header__button {
+    padding: var(--spacing-sm);
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+  }
+
+  .header__time {
+    padding: var(--spacing-sm) var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+
+  .header__time-value {
+    font-size: 16px;
+  }
+
+  .header__date-value {
+    font-size: 10px;
+  }
+}
+
+/* Desktop - улучшение по рекомендациям */
+@media (min-width: 1024px) {
+  .header__time-value {
+    font-size: 22px;
+  }
+
+  .header__date-value {
+    font-size: 14px;
+  }
+}

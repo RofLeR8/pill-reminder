@@ -1,0 +1,153 @@
+.medicine-carousel {
+  width: 100%;
+  position: relative;
+  padding: var(--spacing-xl) 0;
+  overflow: hidden;
+}
+
+.medicine-carousel--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: var(--color-text-secondary);
+  font-size: 18px;
+}
+
+.medicine-carousel__container {
+  width: 100%;
+  min-height: 500px;
+  perspective: 1200px;
+  perspective-origin: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.medicine-carousel__track-3d {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.medicine-carousel__item-3d {
+  position: absolute;
+  width: 90%;
+  max-width: 500px;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  left: 50%;
+  margin-left: -45%;
+}
+
+/* Индикатор */
+.medicine-carousel__indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xl);
+}
+
+.medicine-carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #D1D5DB;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.medicine-carousel__dot:hover {
+  background-color: #9CA3AF;
+}
+
+.medicine-carousel__dot--active {
+  width: 32px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-primary);
+}
+
+/* Подсказка о свайпе */
+.medicine-carousel__hint {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: white;
+  border: 1px solid var(--color-primary-light);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: var(--shadow-sm);
+}
+
+.medicine-carousel__hint svg {
+  color: var(--color-primary);
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .medicine-carousel__container {
+    min-height: 450px;
+  }
+
+  .medicine-carousel__item-3d {
+    width: 70%;
+    max-width: 450px;
+    margin-left: -35%;
+  }
+
+  .medicine-carousel__hint {
+    display: none;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .medicine-carousel__container {
+    min-height: 500px;
+  }
+
+  .medicine-carousel__item-3d {
+    width: 50%;
+    max-width: 500px;
+    margin-left: -25%;
+  }
+}
+
+/* Wide screen */
+@media (min-width: 1440px) {
+  .medicine-carousel__item-3d {
+    width: 40%;
+    max-width: 550px;
+    margin-left: -20%;
+  }
+}
+
+/* Анимации */
+@keyframes swipeHint {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+}
+
+.medicine-carousel__hint {
+  animation: swipeHint 2s ease-in-out infinite;
+}

@@ -1,0 +1,57 @@
+.profile-popover {
+  position: absolute;
+  top: calc(100% + var(--spacing-sm));
+  right: var(--spacing-md);
+  background-color: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-sm);
+  min-width: 240px;
+  z-index: 1000;
+  animation: slideUp 0.2s ease;
+}
+
+.profile-popover__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.profile-popover__item:hover {
+  background-color: var(--color-primary-light);
+}
+
+.profile-popover__item--destructive {
+  color: var(--color-destructive);
+}
+
+.profile-popover__item--destructive:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.profile-popover__item--destructive svg {
+  color: var(--color-destructive);
+}
+
+.profile-popover__divider {
+  height: 1px;
+  background-color: var(--color-primary-light);
+  margin: var(--spacing-xs) 0;
+}
+
+/* Mobile positioning */
+@media (max-width: 768px) {
+  .profile-popover {
+    right: var(--spacing-sm);
+  }
+}

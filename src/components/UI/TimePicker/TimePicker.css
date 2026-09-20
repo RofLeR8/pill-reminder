@@ -1,0 +1,73 @@
+.time-picker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  width: 100%;
+}
+
+.time-picker__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.time-picker__required {
+  color: var(--color-destructive);
+  font-weight: 700;
+}
+
+.time-picker__input {
+  width: 100%;
+  padding: var(--spacing-md);
+  font-size: 16px;
+  color: var(--color-text-primary);
+  background-color: white;
+  border: 1px solid #E5E7EB;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.time-picker__input:hover:not(:disabled) {
+  border-color: var(--color-primary-light);
+}
+
+.time-picker__input:focus {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  outline: none;
+}
+
+.time-picker__input:disabled {
+  background-color: #F3F4F6;
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+}
+
+.time-picker__input--error {
+  border-color: var(--color-destructive);
+}
+
+.time-picker__input--error:focus {
+  border-color: var(--color-destructive);
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+.time-picker__error {
+  font-size: 12px;
+  color: var(--color-destructive);
+  margin-top: var(--spacing-xs);
+}
+
+/* Стилизация нативного time picker */
+.time-picker__input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: opacity(0.6);
+}
+
+.time-picker__input::-webkit-calendar-picker-indicator:hover {
+  filter: opacity(1);
+}

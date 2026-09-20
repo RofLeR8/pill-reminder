@@ -1,0 +1,71 @@
+.fab {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.fab--bottom-right {
+  bottom: var(--spacing-xl);
+  right: var(--spacing-xl);
+}
+
+.fab--bottom-left {
+  bottom: var(--spacing-xl);
+  left: var(--spacing-xl);
+}
+
+.fab:hover {
+  background-color: #5a3ca5;
+  box-shadow: 0 8px 32px rgba(106, 75, 181, 0.4);
+  transform: translateY(-2px);
+}
+
+.fab:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-lg);
+}
+
+.fab__label {
+  white-space: nowrap;
+}
+
+/* Когда только иконка */
+.fab:not(:has(.fab__label)) {
+  width: 56px;
+  height: 56px;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .fab--bottom-right,
+  .fab--bottom-left {
+    bottom: var(--spacing-lg);
+  }
+
+  .fab--bottom-right {
+    right: var(--spacing-md);
+  }
+
+  .fab--bottom-left {
+    left: var(--spacing-md);
+  }
+
+  .fab:not(:has(.fab__label)) {
+    width: 48px;
+    height: 48px;
+  }
+}
