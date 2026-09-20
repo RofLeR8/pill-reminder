@@ -32,15 +32,13 @@ export const Layout: React.FC = () => {
         navigate('/statistics');
         break;
       case 'export':
-        // TODO: Реализовать экспорт
-        console.log('Export data');
+        navigate('/export');
         break;
       case 'settings':
         navigate('/settings');
         break;
       case 'help':
-        // TODO: Реализовать помощь
-        console.log('Help');
+        navigate('/help');
         break;
       case 'profile-settings':
         navigate('/profile');
@@ -49,8 +47,8 @@ export const Layout: React.FC = () => {
         navigate('/settings');
         break;
       case 'logout':
-        // TODO: Реализовать выход
-        console.log('Logout');
+        localStorage.removeItem('pill-reminder-auth');
+        navigate('/login');
         break;
       default:
         break;

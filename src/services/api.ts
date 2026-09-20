@@ -125,12 +125,19 @@ export const medicineAPI = {
   },
 };
 
+const mockIntakes: MedicineIntake[] = [
+  { id: 'intake-1', medicineId: '1', scheduledTime: '2026-09-19T22:00:00.000Z', takenAt: '2026-09-19T22:04:00.000Z', status: 'taken' },
+  { id: 'intake-2', medicineId: '2', scheduledTime: '2026-09-19T09:00:00.000Z', takenAt: '2026-09-19T09:01:00.000Z', status: 'taken' },
+  { id: 'intake-3', medicineId: '3', scheduledTime: '2026-09-18T20:00:00.000Z', status: 'skipped' },
+  { id: 'intake-4', medicineId: '3', scheduledTime: '2026-09-17T08:00:00.000Z', status: 'missed' },
+];
+
 // API для работы с приёмами лекарств
 export const intakeAPI = {
   async getAll(): Promise<MedicineIntake[]> {
     // TODO: Заменить на fetch('/api/intakes')
     return new Promise((resolve) => {
-      setTimeout(() => resolve([]), 300);
+      setTimeout(() => resolve([...mockIntakes]), 300);
     });
   },
 
@@ -142,23 +149,26 @@ export const intakeAPI = {
           ...intake,
           id: `${Date.now()}`,
         };
+        mockIntakes.unshift(newIntake);
         resolve(newIntake);
       }, 300);
     });
   },
 
-  async markAsTaken(_id: string): Promise<MedicineIntake | null> {
-    // TODO: Заменить на fetch(`/api/intakes/${id}/taken`, { method: 'POST' })
-    return new Promise((resolve) => {
-      setTimeout(() => resolve(null), 300);
-    });
+  async markAsTaken(id: string): Promise<MedicineIntake | null> {
+    return new Promise((resolve) => setTimeout(() => {
+      const intake = mockIntakes.find((item) => item.id === id);
+      if (intake) { intake.status = 'taken'; intake.takenAt = new Date().toISOString(); }
+      resolve(intake ?? null);
+    }, 150));
   },
 
-  async markAsSkipped(_id: string): Promise<MedicineIntake | null> {
-    // TODO: Заменить на fetch(`/api/intakes/${id}/skip`, { method: 'POST' })
-    return new Promise((resolve) => {
-      setTimeout(() => resolve(null), 300);
-    });
+  async markAsSkipped(id: string): Promise<MedicineIntake | null> {
+    return new Promise((resolve) => setTimeout(() => {
+      const intake = mockIntakes.find((item) => item.id === id);
+      if (intake) intake.status = 'skipped';
+      resolve(intake ?? null);
+    }, 150));
   },
 };
 
